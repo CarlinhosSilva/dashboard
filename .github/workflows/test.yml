@@ -19,10 +19,7 @@ jobs:
       run: npm install
 
     - name: Executar testes com cobertura
-      env:
-        MONGO_TEST_URI: ${{ secrets.MONGO_TEST_URI }}  # Adicionando a variável de ambiente aqui
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}  # Se precisar do token aqui também
       run: npm test
-
+    
     - name: Publicar cobertura no Codecov
       run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
