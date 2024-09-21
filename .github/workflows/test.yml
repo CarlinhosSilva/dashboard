@@ -18,9 +18,12 @@ jobs:
     - name: Instalar dependências
       run: npm install
 
+    - name: Configurar variáveis de ambiente
+      env:
+        MONGO_TEST_URI: ${{ secrets.MONGO_TEST_URI }}
+
     - name: Executar testes com cobertura
       run: npm test
-    
+
     - name: Publicar cobertura no Codecov
       run: bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
-
