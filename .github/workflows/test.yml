@@ -19,6 +19,8 @@ jobs:
       run: npm install
 
     - name: Executar testes com cobertura
+      env:
+        JWT_SECRET: ${{ secrets.JWT_SECRET }}  # Adicione esta linha para usar o segredo
       run: npm test
     
     - name: Publicar cobertura no Codecov
