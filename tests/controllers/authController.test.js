@@ -44,8 +44,9 @@ describe('AuthController - /api/auth', () => {
     const res = await request(app)
       .post('/api/auth/register')
       .send({ name: 'Novo Usuário', email: 'novo@example.com', password: '123456' });
-
+    
     expect(res.statusCode).toBe(201);
-    expect(res.body.token).toBeDefined();
-  });
+    expect(res.body.message).toBe('Cadastro Realizado Com Sucesso');
+});
+
 });

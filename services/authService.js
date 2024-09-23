@@ -17,8 +17,9 @@ const login = async (email, password) => {
     if (!user || !(await bcrypt.compare(password, user.password))) {
         throw new Error('Credenciais inválidas');
     }
-
-    return generateToken(user._id);
+    user.token = generateToken(user._id); 
+    returnUser = {name: user.name, token: user.token}
+    return returnUser;
 };
 
 const generateToken = (userId) => {
